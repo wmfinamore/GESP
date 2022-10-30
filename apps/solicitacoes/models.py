@@ -1,10 +1,9 @@
 from django.db import models
 from apps.core.models import Auditoria
 from apps.locais.models import Endereco
-from datetime import date
 
 
-class Servicos(Auditoria):
+class Servico(Auditoria):
     nome = models.CharField(max_length=100, verbose_name='Nome')
     status = models.BooleanField(default=True)
 
@@ -12,6 +11,8 @@ class Servicos(Auditoria):
         return self.nome
 
     class Meta:
+        verbose_name = 'Serviço'
+        verbose_name_plural = 'Serviços'
         ordering = ['nome',]
 
 
@@ -34,7 +35,7 @@ class Solicitacao(Auditoria):
                                    verbose_name='Tipos de Origem')
     numero_documento = models.CharField(max_length=25, null=True, blank=True, verbose_name='Número do Documento')
     data_entrada = models.DateField(verbose_name='Data de Entrada', null=True, blank=True)
-    tipo_servico = models.ForeignKey(Servicos, on_delete=models.PROTECT, null=True, blank=True,
+    tipo_servico = models.ForeignKey(Servico, on_delete=models.PROTECT, null=True, blank=True,
                                      verbose_name='Tipo de servico', limit_choices_to={'status': True})
     endereco = models.ForeignKey(Endereco, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Endereço')
     numero_endereco = models.CharField(max_length=6, null=True, blank=True, verbose_name='Número do Endereço')
