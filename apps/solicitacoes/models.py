@@ -47,7 +47,6 @@ class Solicitacao(Auditoria):
         return str(self.tipo_origem) + ' - ' + str(self.numero_documento) + ' - ' \
                + str(self.endereco) + ' - ' + str(self.tipo_servico)
 
-
     class Meta:
         verbose_name = 'Solicitação'
         verbose_name_plural = 'Solicitações'
