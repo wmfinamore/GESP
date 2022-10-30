@@ -10,7 +10,8 @@ class ServicosHistoryAdmin(SimpleHistoryAdmin):
 
 
 class SolicitacaoHistoryAdmin(SimpleHistoryAdmin):
-    list_display = ['tipo_origem', 'numero_documento', 'endereco', 'numero_endereco', 'tipo_servico', ]
+    list_display = ['tipo_origem', 'numero_documento', 'endereco', 'numero_endereco', 'tipo_servico',
+                    'tem_ordem_servico', ]
     search_fields = ['numero_documento', 'endereco__logradouro', 'endereco__bairro', 'endereco__bairro', ]
     list_filter = ['data_entrada', 'tipo_servico']
     fieldsets = (
