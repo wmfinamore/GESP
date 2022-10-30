@@ -52,3 +52,12 @@ class Solicitacao(Auditoria):
         verbose_name = 'Solicitação'
         verbose_name_plural = 'Solicitações'
         ordering = ['-data_entrada', 'endereco__logradouro']
+
+    @property
+    def tem_ordem_servico(self):
+        os = self.ordem_servico.all()
+
+        if os:
+            return True
+        else:
+            return False
