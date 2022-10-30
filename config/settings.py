@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'accounts',
     'apps.core',
     'apps.locais',
+    'apps.solicitacoes',
 
 ]
 
