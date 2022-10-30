@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.locais',
     'apps.solicitacoes',
+    'apps.ordens',
 
 ]
 
