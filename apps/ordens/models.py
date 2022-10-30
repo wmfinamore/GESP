@@ -20,7 +20,7 @@ class OrdemServico(Auditoria):
     observacao = models.TextField(null=True, blank=True, verbose_name='Observações')
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
     class Meta:
         verbose_name = 'Ordem de Serviço'
