@@ -4,11 +4,30 @@ from .models import Servico, Solicitacao
 
 
 class ServicosHistoryAdmin(SimpleHistoryAdmin):
-    pass
+    list_display = ['nome', 'status', ]
+    search_fields = ['nome', ]
+    list_filter = ['status', ]
 
 
 class SolicitacaoHistoryAdmin(SimpleHistoryAdmin):
-    pass
+    search_fields = ['numero_documento', 'endereco__logradouro', 'endereco__bairro', 'tipo_servico']
+    list_filter = ['data_entrada', 'tipo_servico']
+    fieldsets = (
+        (None, {
+            'fields': (
+                ('tipo_servico', 'natureza_solicitante', 'prazo_resposta', ),
+                ('tipo_origem', 'numero_documento', 'data_entrada'),
+            )
+        }),
+        ('Detalhes da Solicitação', {
+            'fields': (
+                ('endereco', 'numero_endereco',),
+                ('informacao_extra_local',),
+
+            )
+        }),
+    )
+    autocomplete_fields = ['endereco', ]
 
 
 admin.site.register(Servico, ServicosHistoryAdmin)
