@@ -14,6 +14,7 @@ class SolicitacaoHistoryAdmin(SimpleHistoryAdmin):
                     'numero_ordem', ]
     search_fields = ['numero_documento', 'endereco__logradouro', 'endereco__bairro', 'endereco__bairro', ]
     list_filter = ['data_entrada', 'tipo_servico']
+    readonly_fields = ['numero_ordem', ]
     fieldsets = (
         (None, {
             'fields': (
@@ -25,6 +26,12 @@ class SolicitacaoHistoryAdmin(SimpleHistoryAdmin):
             'fields': (
                 ('endereco', 'numero_endereco',),
                 ('informacao_extra_local',),
+
+            )
+        }),
+        ('Ordem de Serviço', {
+            'fields': (
+                ('numero_ordem',),
 
             )
         }),
