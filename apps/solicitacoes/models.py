@@ -43,6 +43,7 @@ class Solicitacao(Auditoria):
     natureza_solicitante = models.CharField(max_length=15, null=True, blank=True, choices=NATUREZA_SOLICITANTE,
                                             verbose_name='Natureza do Solicitante')
     prazo_resposta = models.DateField(verbose_name='Prazo para resposta', null=True, blank=True)
+    numero_ordem = models.PositiveBigIntegerField(editable=False, null=True, blank=True, verbose_name='Número da O.S.')
 
     def __str__(self):
         return str(self.tipo_origem) + ' - ' + str(self.numero_documento) + ' - ' \
