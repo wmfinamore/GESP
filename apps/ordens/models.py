@@ -14,7 +14,7 @@ STATUS_SERVICO = [
 
 class OrdemServico(Auditoria):
     solicitacoes = models.ManyToManyField(Solicitacao, blank=True, related_name='ordem_servico',
-                                          verbose_name='Solicitações')
+                                          verbose_name='Solicitações', limit_choices_to={'numero_ordem': None})
     detalhe_servico = models.TextField(null=True, blank=True, verbose_name='Detalhes do Serviço')
     data_execucao = models.DateField(null=True, blank=True, verbose_name='Data de Execução')
     status_servico = models.CharField(max_length=15, null=True, blank=True, choices=STATUS_SERVICO,
