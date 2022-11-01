@@ -1,6 +1,8 @@
 from django.db import models
 from apps.core.models import Auditoria
 from apps.solicitacoes.models import Solicitacao
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 STATUS_SERVICO = [
@@ -26,3 +28,8 @@ class OrdemServico(Auditoria):
         verbose_name = 'Ordem de Serviço'
         verbose_name_plural = 'Ordens de Serviço'
         ordering = ['-data_inclusao']
+
+
+@receiver(post_save, sender=OrdemServico)
+def update_solicitacao(sender, instance, **kwargs):
+    instance.solicitacoes.all().update(numero_ordem=instance.id)
